@@ -47,7 +47,7 @@ Requirements: [http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel/thing](
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Thing/context.jsonld",
+  "@context": "https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Thing/context.jsonld",
   "@iot.id": 1,
   "@iot.selfLink": "http://example.org/v1.1/Things(1)",
   "Locations@iot.navigationLink": "Things(1)/Locations",
@@ -64,11 +64,18 @@ Requirements: [http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel/thing](
 
 #### ttl
 ```ttl
-@prefix sta: <https://schemas.opengis.org/sta/def/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 
-<http://w3id.org/ogcincubator/bblocks-sta/1> sta:Datastreams "Things(1)/Datastreams" ;
-    sta:HistoricalLocations "Things(1)/HistoricalLocations" ;
-    sta:Locations "Things(1)/Locations" .
+<http://w3id.org/ogcincubator/bblocks-sta/1> dcterms:description "This thing is an oven." ;
+    dcterms:title "Oven" ;
+    geo:hasGeometry <http://w3id.org/ogcincubator/bblocks-sta/Things(1)/Locations> ;
+    prov:hadLocation <http://w3id.org/ogcincubator/bblocks-sta/Things(1)/HistoricalLocations> ;
+    sosa:ObservationCollection <http://w3id.org/ogcincubator/bblocks-sta/Things(1)/Datastreams> ;
+    schema:additionalProperty [ ] .
 
 
 ```
@@ -117,21 +124,43 @@ properties:
     type: string
     description: Reference link to the FeatureOfInterest.
 x-jsonld-extra-terms:
-  Locations@iot.navigationLink: https://schemas.opengis.org/sta/def/core#Locations
-  Datastreams@iot.navigationLink: https://schemas.opengis.org/sta/def/core#Datastreams
-  HistoricalLocations@iot.navigationLink: https://schemas.opengis.org/sta/def/core#HistoricalLocations
+  name: http://purl.org/dc/terms/title
+  description: http://purl.org/dc/terms/description
+  properties:
+    x-jsonld-id: https://schema.org/additionalProperty
+    x-jsonld-context:
+      category: https://schema.org/category
+      identifier: https://schema.org/identifier
+      provider: https://schema.org/provider
+      name: https://schema.org/name
+      termCode: https://schema.org/termCode
+      inDefinedTermSet: https://schema.org/inDefinedTermSet
+      value: https://schema.org/value
+      propertyID: https://schema.org/propertyID
+  HistoricalLocations@iot.navigationLink:
+    x-jsonld-id: http://www.w3.org/ns/prov#hadLocation
+    x-jsonld-type: '@id'
+  Locations@iot.navigationLink:
+    x-jsonld-id: http://www.opengis.net/ont/geosparql#hasGeometry
+    x-jsonld-type: '@id'
+  Datastreams@iot.navigationLink:
+    x-jsonld-id: http://www.w3.org/ns/sosa/ObservationCollection
+    x-jsonld-type: '@id'
 x-jsonld-prefixes:
   orel: http://www.opengis.net/def/rel/
-  sta: https://schemas.opengis.org/sta/def/core#
-  sosa: https://www.w3.org/TR/vocab-ssn/#
-  rel: http://www.iana.org/assignments/relation/
+  dct: http://purl.org/dc/terms/
+  sdo: https://schema.org/
+  prov: http://www.w3.org/ns/prov#
+  geo: http://www.opengis.net/ont/geosparql#
+  sosa: http://www.w3.org/ns/sosa/
+  ssn: http://www.w3.org/ns/ssn/
 
 ```
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Thing/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Thing/schema.yaml)
+* YAML version: [schema.yaml](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Thing/schema.json)
+* JSON version: [schema.json](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Thing/schema.yaml)
 
 
 # JSON-LD Context
@@ -139,22 +168,49 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
+    "name": "dct:title",
+    "description": "dct:description",
+    "properties": {
+      "@id": "sdo:additionalProperty",
+      "@context": {
+        "category": "sdo:category",
+        "identifier": "sdo:identifier",
+        "provider": "sdo:provider",
+        "name": "sdo:name",
+        "termCode": "sdo:termCode",
+        "inDefinedTermSet": "sdo:inDefinedTermSet",
+        "value": "sdo:value",
+        "propertyID": "sdo:propertyID"
+      }
+    },
+    "HistoricalLocations@iot.navigationLink": {
+      "@id": "prov:hadLocation",
+      "@type": "@id"
+    },
+    "Locations@iot.navigationLink": {
+      "@id": "geo:hasGeometry",
+      "@type": "@id"
+    },
+    "Datastreams@iot.navigationLink": {
+      "@id": "sosa:ObservationCollection",
+      "@type": "@id"
+    },
     "@iot.id": "@id",
     "@iot.selfLink": "orel:iana/1.0/self",
-    "Locations@iot.navigationLink": "sta:Locations",
-    "Datastreams@iot.navigationLink": "sta:Datastreams",
-    "HistoricalLocations@iot.navigationLink": "sta:HistoricalLocations",
     "orel": "http://www.opengis.net/def/rel/",
-    "sta": "https://schemas.opengis.org/sta/def/core#",
-    "sosa": "https://www.w3.org/TR/vocab-ssn/#",
-    "rel": "http://www.iana.org/assignments/relation/",
+    "dct": "http://purl.org/dc/terms/",
+    "sdo": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
     "@version": 1.1
   }
 }
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Thing/context.jsonld)
+[context.jsonld](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Thing/context.jsonld)
 
 ## Sources
 
@@ -164,6 +220,6 @@ You can find the full JSON-LD context here:
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/bblocks-sta](https://github.com/ogcincubator/bblocks-sta)
+* URL: [https://github.com/British-Oceanographic-Data-Centre/bblocks-sta](https://github.com/British-Oceanographic-Data-Centre/bblocks-sta)
 * Path: `_sources/Thing`
 

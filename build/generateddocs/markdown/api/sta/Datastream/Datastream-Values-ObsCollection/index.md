@@ -105,7 +105,7 @@ Requirements: [http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastr
 #### jsonld
 ```jsonld
 {
-  "@context": "https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/context.jsonld",
+  "@context": "https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/context.jsonld",
   "@iot.count": 3,
   "value": [
     {
@@ -183,25 +183,25 @@ Requirements: [http://www.opengis.net/spec/iot_sensing/1.1/req/datamodel#datastr
 
 #### ttl
 ```ttl
-@prefix sosa1: <https://www.w3.org/TR/vocab-ssn/#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 
-<http://w3id.org/ogcincubator/bblocks-sta/5c9828ee2b0cb39ae13fc06dd238960f> sosa1:hasFeatureOfInterest "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('5c9828ee2b0cb39ae13fc06dd238960f')/FeatureOfInterest" ;
-    sosa1:hasSimpleResult [ ] ;
-    sosa1:isMemberOf "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('5c9828ee2b0cb39ae13fc06dd238960f')/Datastream" ;
-    sosa1:phenomenonTime "2024-03-30T11:35:00" ;
-    sosa1:resultTime "2024-03-30T11:35:00" .
+<http://w3id.org/ogcincubator/bblocks-sta/5c9828ee2b0cb39ae13fc06dd238960f> sosa:hasFeatureOfInterest <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('5c9828ee2b0cb39ae13fc06dd238960f')/FeatureOfInterest> ;
+    sosa:hasSimpleResult [ ] ;
+    sosa:phenomenonTime "2024-03-30T11:35:00" ;
+    sosa:resultTime "2024-03-30T11:35:00" ;
+    sosa:usedProcedure <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('5c9828ee2b0cb39ae13fc06dd238960f')/Datastream> .
 
-<http://w3id.org/ogcincubator/bblocks-sta/af6992915f7037c10949a4aab2119109> sosa1:hasFeatureOfInterest "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('af6992915f7037c10949a4aab2119109')/FeatureOfInterest" ;
-    sosa1:hasSimpleResult [ ] ;
-    sosa1:isMemberOf "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('af6992915f7037c10949a4aab2119109')/Datastream" ;
-    sosa1:phenomenonTime "2024-03-30T11:17:00" ;
-    sosa1:resultTime "2024-03-30T11:17:00" .
+<http://w3id.org/ogcincubator/bblocks-sta/af6992915f7037c10949a4aab2119109> sosa:hasFeatureOfInterest <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('af6992915f7037c10949a4aab2119109')/FeatureOfInterest> ;
+    sosa:hasSimpleResult [ ] ;
+    sosa:phenomenonTime "2024-03-30T11:17:00" ;
+    sosa:resultTime "2024-03-30T11:17:00" ;
+    sosa:usedProcedure <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('af6992915f7037c10949a4aab2119109')/Datastream> .
 
-<http://w3id.org/ogcincubator/bblocks-sta/ec36b55fb78177474b2f5ec2227c0818> sosa1:hasFeatureOfInterest "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('ec36b55fb78177474b2f5ec2227c0818')/FeatureOfInterest" ;
-    sosa1:hasSimpleResult [ ] ;
-    sosa1:isMemberOf "https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('ec36b55fb78177474b2f5ec2227c0818')/Datastream" ;
-    sosa1:phenomenonTime "2024-03-30T11:17:00" ;
-    sosa1:resultTime "2024-03-30T11:17:00" .
+<http://w3id.org/ogcincubator/bblocks-sta/ec36b55fb78177474b2f5ec2227c0818> sosa:hasFeatureOfInterest <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('ec36b55fb78177474b2f5ec2227c0818')/FeatureOfInterest> ;
+    sosa:hasSimpleResult [ ] ;
+    sosa:phenomenonTime "2024-03-30T11:17:00" ;
+    sosa:resultTime "2024-03-30T11:17:00" ;
+    sosa:usedProcedure <https://sensor-things-api-sensor-things-api.apps.dcw1.paas.psnc.pl/jf2024/api/v1.0/Observations('ec36b55fb78177474b2f5ec2227c0818')/Datastream> .
 
 
 ```
@@ -218,7 +218,7 @@ properties:
     type: array
     items:
       allOf:
-      - $ref: https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Observation/schema.yaml
+      - $ref: https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Observation/schema.yaml
     x-jsonld-id: '@graph'
 x-jsonld-extra-terms:
   Observations@iot.navigationLink:
@@ -231,8 +231,8 @@ x-jsonld-prefixes:
 
 Links to the schema:
 
-* YAML version: [schema.yaml](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/schema.json)
-* JSON version: [schema.json](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/schema.yaml)
+* YAML version: [schema.yaml](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/schema.json)
+* JSON version: [schema.json](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/schema.yaml)
 
 
 # JSON-LD Context
@@ -240,32 +240,44 @@ Links to the schema:
 ```jsonld
 {
   "@context": {
-    "@iot.count": "sosa:collectionCount",
-    "@iot.id": "@id",
-    "@iot.selfLink": "orel:iana/1.0/self",
-    "phenomenonTime": "sosa:phenomenonTime",
-    "result": "sosa:hasSimpleResult",
-    "resultQuality": "sosa:resultQuality",
-    "resultTime": "sosa:resultTime",
-    "validTime": "sta:validTime",
-    "Datastream@iot.navigationLink": "sosa:isMemberOf",
-    "FeatureOfInterest@iot.navigationLink": "sosa:hasFeatureOfInterest",
-    "value": "@graph",
     "Observations@iot.navigationLink": {
       "@id": "sosa:hasMember",
       "@type": "@id"
     },
+    "@iot.count": "sosa:collectionCount",
+    "@iot.id": "@id",
+    "@iot.selfLink": "orel:iana/1.0/self",
+    "phenomenonTime": "http://www.w3.org/ns/sosa/phenomenonTime",
+    "result": "http://www.w3.org/ns/sosa/hasSimpleResult",
+    "resultQuality": {
+      "@context": {
+        "rdf:type": "rdf:type",
+        "dqv:value": "dqv:value"
+      },
+      "@id": "dqv:hasQualityMeasurement"
+    },
+    "resultTime": "http://www.w3.org/ns/sosa/resultTime",
+    "Datastream@iot.navigationLink": {
+      "@id": "http://www.w3.org/ns/sosa/usedProcedure",
+      "@type": "@id"
+    },
+    "FeatureOfInterest@iot.navigationLink": {
+      "@id": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+      "@type": "@id"
+    },
+    "value": "@graph",
     "sosa": "https://www.w3.org/TR/vocab-ssn/#",
     "orel": "http://www.opengis.net/def/rel/",
-    "sta": "https://schemas.opengis.org/sta/def/core#",
-    "rel": "http://www.iana.org/assignments/relation/",
+    "dqv": "http://www.w3.org/ns/dqv#",
+    "sdo": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/",
     "@version": 1.1
   }
 }
 ```
 
 You can find the full JSON-LD context here:
-[context.jsonld](https://ogcincubator.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/context.jsonld)
+[context.jsonld](https://british-oceanographic-data-centre.github.io/bblocks-sta/build/annotated/api/sta/Datastream/Datastream-Values-ObsCollection/context.jsonld)
 
 ## Sources
 
@@ -275,6 +287,6 @@ You can find the full JSON-LD context here:
 
 The source code for this Building Block can be found in the following repository:
 
-* URL: [https://github.com/ogcincubator/bblocks-sta](https://github.com/ogcincubator/bblocks-sta)
+* URL: [https://github.com/British-Oceanographic-Data-Centre/bblocks-sta](https://github.com/British-Oceanographic-Data-Centre/bblocks-sta)
 * Path: `_sources/Datastream/Datastream-Values-ObsCollection`
 

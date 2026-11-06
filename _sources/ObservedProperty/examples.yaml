@@ -1,0 +1,5 @@
+- title: ObservedProperty specifies the phenomenon of an Observation. It defines what is being observed or measured.
+  base-uri: http://w3id.org/ogcincubator/bblocks-sta/
+  snippets:
+    - language: json
+      ref: examples/ObservedProperty.json
